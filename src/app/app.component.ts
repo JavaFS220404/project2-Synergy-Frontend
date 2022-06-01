@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 export class AppComponent {
   title = 'project2-Synergy-Frontend';
 }
-
+/*
 @Component({
   selector: 'app-show-api',
   templateUrl: './app.component.html',
@@ -38,9 +38,9 @@ export class ShowApiComponent implements OnInit {
         this.li = Response;
         this.lis = this.li.list;
       });
-      /*
+
     function hideloader() {
       document.getElementById('loading').style.display = 'none';
-    }*/
+    }
   }
-}
+}*/
