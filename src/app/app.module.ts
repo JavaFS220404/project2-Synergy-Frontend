@@ -8,6 +8,7 @@ import { CharactersComponent } from './components/characters/characters.componen
 import { PotionsComponent } from './components/potions/potions.component';
 import { SpellsComponent } from './components/spells/spells.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
