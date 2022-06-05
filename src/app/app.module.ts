@@ -9,6 +9,7 @@ import { PotionsComponent } from './components/potions/potions.component';
 import { SpellsComponent } from './components/spells/spells.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     NavBarComponent,
     CharactersComponent,
     PotionsComponent,
-    SpellsComponent
+    SpellsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
