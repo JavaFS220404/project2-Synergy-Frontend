@@ -24,11 +24,12 @@ export class LoginComponent implements OnInit {
       {
         next:(authUser:User)=>{
           this.userService.activeUser = authUser;
-          this.router.navigate(["/teams"]);
+          this.router.navigate(["/characters"]);
         },
         error:()=>{
           this.userService.activeUser = null;
           console.log("login failed");
+          this.router.navigate(["/register"]);
         }
       }
     );
