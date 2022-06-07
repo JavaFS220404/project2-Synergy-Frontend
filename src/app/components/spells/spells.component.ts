@@ -10,6 +10,8 @@ import { SpellService } from 'src/app/services/spell.service';
 export class SpellsComponent implements OnInit {
 
   spells: Spell[] = [];
+  name: any;
+  icon = "&#10004";
 
   constructor(private spellService: SpellService) { }
 
@@ -27,5 +29,17 @@ export class SpellsComponent implements OnInit {
       }
     });
   }
+
+  Search() {
+    if (this.name == "") {
+      this.getSpells();
+    } else {
+      this.spells = this.spells.filter(res => {
+        return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+      })
+    }
+  }
+
+
 
 }

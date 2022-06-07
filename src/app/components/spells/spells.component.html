@@ -1,3 +1,7 @@
+<nav class="navbar spellBar">
+    <input class="form-control" type="text" name="name" [(ngModel)]="name" (ngModelChange)="Search()"
+        placeholder="Enter the name to search">
+</nav>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-6 col-lg-4 col-xl-3 mb-5" *ngFor="let spell of spells">
@@ -17,7 +21,7 @@
                                 </tr>
                                 <tr *ngIf="spell?.canBeVerbal">
                                     <td class="titles">Can be verbal</td>
-                                    <td class="isVerbal text-center">{{spell.canBeVerbal}}</td>
+                                    <td class="isVerbal text-center" [innerHTML]="icon">{{spell.canBeVerbal}}</td>
                                 </tr>
                                 <tr>
                                     <td class="titles">Type</td>
