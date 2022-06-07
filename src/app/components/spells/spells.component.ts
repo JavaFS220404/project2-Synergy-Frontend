@@ -23,9 +23,10 @@ export class SpellsComponent implements OnInit {
         this.spells = data;
       },
       error: () => {
-        console.log("Unable to access todo from API.");
+        console.log("Unable to access spell from API.");
       }
     });
   }
+
 
 }

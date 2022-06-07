@@ -1,1 +1,44 @@
-<p>potions works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6 col-lg-4 col-xl-3 mb-5" *ngFor="let potion of potions">
+      <div class="card">
+        <div class="card-topper card-img-top">{{potion.name}}</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table id="test" class="table table-bordered table-hover">
+              <tbody>
+                <tr *ngIf="potion?.effect">
+                  <td class="titles">Effect</td>
+                  <td class="text-center">{{potion.effect}}</td>
+                </tr>
+                <tr *ngIf="potion?.sideEffects">
+                  <td class="titles">Side Effects</td>
+                  <td class="text-center">{{potion.sideEffects}}</td>
+                </tr>
+                <tr *ngIf="potion?.characteristics">
+                  <td class="titles">Characteristics</td>
+                  <td class="text-center">{{potion.characteristics}}</td>
+                </tr>
+                <tr *ngIf="potion?.time">
+                  <td class="titles">Time</td>
+                  <td class="text-center">{{potion.time}}</td>
+                </tr>
+                <tr *ngIf="potion?.difficulty">
+                  <td class="titles">Difficulty</td>
+                  <td class="text-center">{{potion.difficulty}}</td>
+                </tr>
+                <tr *ngIf="potion?.ingredients">
+                  <td class="titles">Ingredients</td>
+                  <td class="text-center" *ngFor="let ingredient of potion.ingredients">{{ingredient.name}}</td>
+                </tr>
+                <tr *ngIf="potion?.manufacturer">
+                  <td class="titles">Manufacturer</td>
+                  <td class="text-center">{{potion.manufacturer}}</td>
+                </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
