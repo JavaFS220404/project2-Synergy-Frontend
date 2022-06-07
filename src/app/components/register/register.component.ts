@@ -12,6 +12,9 @@ export class RegisterComponent implements OnInit {
 
   newUsername:string="";
   newPassword:string="";
+  newFirstName:string="";
+  newLastName:string="";
+  newEmail:string="";
   errorMessage:string = '';
 
   constructor(private userService:UserService, private router:Router) { }
@@ -20,13 +23,15 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
-    let user:User = new User(0, this.newUsername, this.newPassword);
+    let user:User = new User(0, 
+      this.newUsername, this.newPassword, this.newFirstName, this.newLastName, this.newEmail);
+      console.log(user);
     this.userService.registerUser(user).subscribe({
       next:() => {
         this.router.navigate(["/login"]);
       },
       error:()=>{
-        this.errorMessage='There was a problem registering. Try another username.';
+        this.errorMessage='There was a problem registering. Try another username or E-mail address.';
       }
     })
 
