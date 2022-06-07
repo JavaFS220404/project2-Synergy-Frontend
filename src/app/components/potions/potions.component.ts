@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Potion } from 'src/app/models/potion';
+import { PotionService } from 'src/app/services/potion.service';
 
 @Component({
   selector: 'app-potions',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PotionsComponent implements OnInit {
 
-  constructor() { }
+  potions: Potion[] = [];
+  name: string = "";
+  constructor(private potionService:PotionService) { }
 
   ngOnInit(): void {
+    this.getPotions();
+  }
+
+  getPotions = () => {
+    this.potionService.getPotions().subscribe({
+      next: (data: Potion[]) => {
+        this.potions = data;
+      },
+      error: () => {
+        console.log("Unable to access potion from API.");
+      }
+    });
   }
 
 }

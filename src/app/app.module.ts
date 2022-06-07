@@ -11,6 +11,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { RegisterComponent } from './components/register/register.component';
     SpellsComponent,
     LoginComponent,
     RegisterComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

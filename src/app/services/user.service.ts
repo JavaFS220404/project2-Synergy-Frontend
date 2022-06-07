@@ -22,4 +22,5 @@ export class UserService {
   registerUser(user:User):Observable<unknown>{
     return this.http.post(this.url+"register", user);
   }
+
 }
