@@ -18,7 +18,7 @@ export class CharacterService {
   }
 
   addFavorite(characterId: string): Observable<unknown> {
-    return this.http.post(this.url + characterId, { withCredentials: true });
+    return this.http.post(this.favUrl + characterId, { withCredentials: true });
   }
 
 }

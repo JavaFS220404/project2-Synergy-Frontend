@@ -18,7 +18,7 @@ export class SpellService {
   }
 
   addFavorite(spellId: string): Observable<unknown> {
-    return this.http.post(this.url + spellId, { withCredentials: true });
+    return this.http.post(this.favUrl + spellId, { withCredentials: true });
   }
 
 
