@@ -18,6 +18,6 @@ export class PotionService {
   }
 
   addFavorite(potionId: string): Observable<unknown>{
-    return this.http.post(this.url+potionId, { withCredentials: true });
+    return this.http.post(this.favUrl+potionId, { withCredentials: true });
   }
 }
