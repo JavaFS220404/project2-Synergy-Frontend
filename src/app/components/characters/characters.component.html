@@ -1,3 +1,11 @@
+<nav class="navbar characterBar">
+    <input class="form-control" type="text" nickname="nickname" [(ngModel)]="nickname" (ngModelChange)="Search()"
+        placeholder="Enter the name to search">
+</nav>
+<nav class="navbar characterBar">
+    <input class="form-control" type="text" hogwartsHouse="hogwartsHouse" [(ngModel)]="hogwartsHouse" (ngModelChange)="Searchhouse()"
+        placeholder="Enter name of the house to search">
+</nav>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-6 col-lg-4 col-xl-3 mb-5" *ngFor="let character of characters">
@@ -13,7 +21,7 @@
                                 </tr>
                                 <tr>
                                     <td class="titles">Is he/she Hogwarts Student?</td>
-                                    <td class="house text-center">{{character.hogwartsStudent}}</td>
+                                    <td class="house text-center" [innerHTML]="icon">{{character.hogwartsStudent}}</td>
                                 </tr>
                                 <tr>
                                     <td class="titles">Hogwarts house</td>

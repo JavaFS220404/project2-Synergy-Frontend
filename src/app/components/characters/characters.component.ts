@@ -10,6 +10,9 @@ import { CharacterService } from 'src/app/services/character.service';
 export class CharactersComponent implements OnInit {
 
     characters: Character[] = [];
+    icon = "&#10004";
+    nickname: any;
+    hogwartsHouse: any;
 
   constructor(private characterService: CharacterService) { }
   ngOnInit(): void {
@@ -26,7 +29,18 @@ export class CharactersComponent implements OnInit {
       }
     });
   }
+  
+  Search() {
+    if (this.nickname == "") {
+      this.getCharacters();
+    } else {
+      this.characters = this.characters.filter(res => {
+        return res.nickname.toLocaleLowerCase().match(this.nickname.toLocaleLowerCase());
+      })
+    }
+  }
 
+<<<<<<< HEAD
   addFavorite = (characterId: string) => {
     this.characterService.addFavorite(characterId).subscribe({
       next: () => {
@@ -37,4 +51,16 @@ export class CharactersComponent implements OnInit {
     });
   }
 
+=======
+  
+  Searchhouse() {
+    if (this.hogwartsHouse == "") {
+      this.getCharacters();
+    } else {
+      this.characters = this.characters.filter(res => {
+        return res.hogwartsHouse.toLocaleLowerCase().match(this.hogwartsHouse.toLocaleLowerCase());
+      })
+    }
+  }
+>>>>>>> eb6b8d45e719fdfd30f1ce89a62abc709ad9e0ab
 }
