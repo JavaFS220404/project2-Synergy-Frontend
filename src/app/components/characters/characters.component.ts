@@ -40,7 +40,6 @@ export class CharactersComponent implements OnInit {
     }
   }
 
-<<<<<<< HEAD
   addFavorite = (characterId: string) => {
     this.characterService.addFavorite(characterId).subscribe({
       next: () => {
@@ -51,7 +50,6 @@ export class CharactersComponent implements OnInit {
     });
   }
 
-=======
   
   Searchhouse() {
     if (this.hogwartsHouse == "") {
@@ -62,5 +60,4 @@ export class CharactersComponent implements OnInit {
       })
     }
   }
->>>>>>> eb6b8d45e719fdfd30f1ce89a62abc709ad9e0ab
 }
