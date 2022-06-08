@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
       {
         next:(authUser:User)=>{
           this.userService.activeUser = authUser;
+          //console.log("Active user " + this.userService.provideActiveUser());
           this.router.navigate(["/characters"]);
         },
         error:()=>{
