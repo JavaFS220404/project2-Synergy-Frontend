@@ -10,15 +10,24 @@ export class CharacterService {
 
   url: string = 'http://localhost:8084/character/';
   favUrl: string = 'http://localhost:8084/favourite/character/';
+  apiUrl: string = 'https://harry-potter-api-english-production.up.railway.app/characters/';
 
   constructor(private http: HttpClient) { }
 
   getCharacters(): Observable<any> {
-    return this.http.get('https://harry-potter-api-english-production.up.railway.app/characters') as Observable<any>;
+    return this.http.get(this.apiUrl) as Observable<any>;
   }
 
   addFavorite(characterId: string): Observable<unknown> {
     return this.http.post(this.favUrl + characterId, { withCredentials: true });
+  }
+
+  getMyFavorites(): Observable<any> {
+    return this.http.get(this.favUrl, { withCredentials: true }) as Observable<any>;
+  }
+
+  getFavorite(id: number): Observable<any> {
+    return this.http.get(this.apiUrl + id) as Observable<Character>;
   }
 
 }
