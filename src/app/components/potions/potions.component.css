@@ -64,3 +64,19 @@ label input[type="checkbox"] {
 .custom-checkbox input[type="checkbox"]:checked~.glyphicon-star {
   opacity: 1;
 }
+
+
+
+
+.btn-outline-secondary {
+  height: 40px;
+  width: 120px;
+  font-size: 13px;
+  background-color: #312823;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
