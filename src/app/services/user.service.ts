@@ -10,6 +10,7 @@ export class UserService {
   url:string = 'http://localhost:8084/users/';
 
   activeUser:User|null = null;
+  loggedIn:boolean = false;
 
   constructor(private http:HttpClient) { }
 
@@ -30,6 +31,11 @@ export class UserService {
   registerUser(user:User):Observable<unknown>{
     console.log("registering user: " + user);
     return this.http.post(this.url+"register", user);
+  }
+
+  logout(){
+    this.activeUser = null;
+    this.loggedIn = false;
   }
 
 }

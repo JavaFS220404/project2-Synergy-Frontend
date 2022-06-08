@@ -12,9 +12,13 @@ export class NavBarComponent implements OnInit {
 
   //loggedInUser:any = this.userService.activeUser?.username; //"No one";
   loggedInUser:string = "No one";
-
+  loggedIn:boolean = false;
 
   ngOnInit(): void {
   }
 
+  logout(){
+    console.log("logging out");
+    this.userService.logout();
+  }
 }

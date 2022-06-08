@@ -4,6 +4,8 @@
   <li><a class="btn" routerLinkActive="active" routerLink="/potions">Potions</a></li>
   <li><a class="btn" routerLinkActive="active" routerLink="/login">Login</a></li>
   <li><a class="btn" routerLinkActive="active" routerLink="/register">Register</a></li>
-  <li><a class="btn" routerLinkActive="active" routerLink="/logout">Logout</a></li>
+  <li><a class="btn" (click)="logout()">Logout</a></li>
   <li><a class="label" id="statusText">{{loggedInUser}} is logged in</a></li>
 </ul>
+
+<!-- *ngIf="loggedIn" -->

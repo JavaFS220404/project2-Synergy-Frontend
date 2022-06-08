@@ -24,12 +24,13 @@ export class LoginComponent implements OnInit {
       {
         next:(authUser:User)=>{
           this.userService.activeUser = authUser;
-          //console.log("Active user " + this.userService.provideActiveUser());
+          this.userService.loggedIn = true;
           this.router.navigate(["/characters"]);
         },
         error:()=>{
           this.userService.activeUser = null;
           console.log("login failed");
+          this.userService.loggedIn = false;
           this.router.navigate(["/register"]);
         }
       }
