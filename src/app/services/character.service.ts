@@ -9,10 +9,16 @@ import { Character } from '../models/character';
 export class CharacterService {
 
   url: string = 'http://localhost:8084/character/';
+  favUrl: string = 'http://localhost:8084/favourite/character/';
 
   constructor(private http: HttpClient) { }
 
   getCharacters(): Observable<any> {
     return this.http.get('https://harry-potter-api-english-production.up.railway.app/characters') as Observable<any>;
   }
+
+  addFavorite(characterId: string): Observable<unknown> {
+    return this.http.post(this.url + characterId, { withCredentials: true });
+  }
+
 }

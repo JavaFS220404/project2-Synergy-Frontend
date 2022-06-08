@@ -27,4 +27,14 @@ export class CharactersComponent implements OnInit {
     });
   }
 
+  addFavorite = (characterId: string) => {
+    this.characterService.addFavorite(characterId).subscribe({
+      next: () => {
+      },
+      error: () => {
+        console.log("Unable to access favorites.");
+      }
+    });
+  }
+
 }

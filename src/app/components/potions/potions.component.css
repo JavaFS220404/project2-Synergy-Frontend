@@ -42,7 +42,6 @@ label input[type="checkbox"] {
 
 .custom-checkbox .glyphicon {
   color: black;
-  position: absolute;
   top: 0.4em;
   left: -1.25em;
   font-size: 0.75em;
