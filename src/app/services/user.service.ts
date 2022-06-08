@@ -20,6 +20,7 @@ export class UserService {
   }
 
   registerUser(user:User):Observable<unknown>{
+    console.log("registering user: " + user);
     return this.http.post(this.url+"register", user);
   }
 
