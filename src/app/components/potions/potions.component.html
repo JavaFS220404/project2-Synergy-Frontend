@@ -42,16 +42,14 @@
                 </tr>
             </table>
           </div>
+
           <div>
-
-
-            <label for="id-of-input" class="custom-checkbox">
-              <input type="checkbox" id="id-of-input" />
-              <i class="glyphicon glyphicon-star-empty"></i>
+            <button (click)="addFavorite(potion.id)" type="button" class="btn btn-outline-secondary">
               <i class="glyphicon glyphicon-star"></i>
-              <span>Make Favorite</span>
-            </label>
+              <span> Mark as favorite</span>
+            </button>
           </div>
+
         </div>
       </div>
     </div>

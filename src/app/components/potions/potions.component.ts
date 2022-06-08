@@ -38,4 +38,16 @@ export class PotionsComponent implements OnInit {
     }
   }
 
+  addFavorite = (potionId:string) => {
+    this.potionService.addFavorite(potionId).subscribe({
+      next: () => {
+      },
+      error: () => {
+        console.log("Unable to access favorites.");
+      }
+    });
+  }
+
+
+
 }

@@ -40,6 +40,16 @@ export class SpellsComponent implements OnInit {
     }
   }
 
+  addFavorite = (spellId: string) => {
+    this.spellService.addFavorite(spellId).subscribe({
+      next: () => {
+      },
+      error: () => {
+        console.log("Unable to access favorites.");
+      }
+    });
+  }
+
 
 
 }
