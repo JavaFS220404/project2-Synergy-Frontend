@@ -28,4 +28,14 @@ export class PotionsComponent implements OnInit {
     });
   }
 
+  Search() {
+    if (this.name == "") {
+      this.getPotions();
+    } else {
+      this.potions = this.potions.filter(res => {
+        return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+      })
+    }
+  }
+
 }

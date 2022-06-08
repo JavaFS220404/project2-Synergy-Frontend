@@ -1,3 +1,8 @@
+<nav class="navbar PotionBar">
+  <input class="form-control" type="text" name="name" [(ngModel)]="name" (ngModelChange)="Search()"
+    placeholder="Enter the name to search">
+</nav>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-6 col-lg-4 col-xl-3 mb-5" *ngFor="let potion of potions">
@@ -36,6 +41,16 @@
                   <td class="text-center">{{potion.manufacturer}}</td>
                 </tr>
             </table>
+          </div>
+          <div>
+
+
+            <label for="id-of-input" class="custom-checkbox">
+              <input type="checkbox" id="id-of-input" />
+              <i class="glyphicon glyphicon-star-empty"></i>
+              <i class="glyphicon glyphicon-star"></i>
+              <span>Make Favorite</span>
+            </label>
           </div>
         </div>
       </div>
