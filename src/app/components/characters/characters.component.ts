@@ -14,6 +14,10 @@ export class CharactersComponent implements OnInit {
   nickname: any;
   hogwartsHouse: any;
 
+  displayOnlyFavorites: boolean = false;
+  favs: number[] = [];
+  favCharacters: Character[] = [];
+
   constructor(private characterService: CharacterService) { }
   ngOnInit(): void {
     this.getCharacters();
@@ -60,4 +64,52 @@ export class CharactersComponent implements OnInit {
       })
     }
   }
+
+  toggleFavorites() {
+    if (this.displayOnlyFavorites) {
+      this.displayOnlyFavorites = false;
+    } else {
+      this.getMyFavorites();
+      console.log("Retrieving favorites...");
+      this.displayOnlyFavorites = true;
+    }
+  }
+
+  getMyFavorites = () => {
+    this.characterService.getMyFavorites().subscribe({
+      next: (data: number[]) => {
+        this.favs = data;
+        for (let favId of data) {
+          this.getFavorite(favId);
+        }
+        console.log("Favorites retrieved.");
+      },
+      error: () => {
+        console.log("Unable to access favorites.");
+      }
+    });
+  }
+
+  isFav = (id: number): boolean => {
+    this.getMyFavorites();
+    for (let favId of this.favs) {
+      if (favId == id) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  getFavorite = (id: number) => {
+    this.characterService.getFavorite(id).subscribe({
+      next: (data: Character) => {
+        this.favCharacters.push(data);
+      },
+      error: () => {
+        console.log("Unable to access favorites.");
+      }
+    });
+  }
+
+
 }
