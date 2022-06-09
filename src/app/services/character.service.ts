@@ -30,4 +30,8 @@ export class CharacterService {
     return this.http.get(this.apiUrl + id) as Observable<Character>;
   }
 
+  deleteFavorite(charId: string): Observable<unknown> {
+    return this.http.delete(this.favUrl + charId, { withCredentials: true });
+  }
+
 }

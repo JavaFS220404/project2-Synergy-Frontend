@@ -31,5 +31,9 @@ export class SpellService {
     return this.http.get(this.apiUrl+id) as Observable<Spell>;
   }
 
+  deleteFavorite(spellId: string): Observable<unknown> {
+    return this.http.delete(this.favUrl + spellId, { withCredentials: true });
+  }
+
 
 }

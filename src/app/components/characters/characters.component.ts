@@ -47,6 +47,7 @@ export class CharactersComponent implements OnInit {
   addFavorite = (characterId: string) => {
     this.characterService.addFavorite(characterId).subscribe({
       next: () => {
+        console.log("Added favorite: " + characterId);
       },
       error: () => {
         console.log("Unable to access favorites.");
@@ -104,6 +105,17 @@ export class CharactersComponent implements OnInit {
     this.characterService.getFavorite(id).subscribe({
       next: (data: Character) => {
         this.favCharacters.push(data);
+      },
+      error: () => {
+        console.log("Unable to access favorites.");
+      }
+    });
+  }
+
+  deleteFavorite = (charId: string) => {
+    this.characterService.deleteFavorite(charId).subscribe({
+      next: () => {
+        console.log("Deleted favorite, id: " + charId);
       },
       error: () => {
         console.log("Unable to access favorites.");

@@ -101,5 +101,15 @@ export class SpellsComponent implements OnInit {
     });
   }
 
+  deleteFavorite = (spellId: string) => {
+    this.spellService.deleteFavorite(spellId).subscribe({
+      next: () => {
+        console.log("Deleted favorite, id: " + spellId);
+      },
+      error: () => {
+        console.log("Unable to access favorites.");
+      }
+    });
+  }
 
 }

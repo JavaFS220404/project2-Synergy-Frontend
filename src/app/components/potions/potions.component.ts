@@ -46,6 +46,7 @@ export class PotionsComponent implements OnInit {
   addFavorite = (potionId:string) => {
     this.potionService.addFavorite(potionId).subscribe({
       next: () => {
+        console.log("Added favorite: "+potionId);
       },
       error: () => {
         console.log("Unable to access favorites.");
@@ -92,6 +93,17 @@ export class PotionsComponent implements OnInit {
     this.potionService.getFavorite(id).subscribe({
       next: (data: Potion) => {
         this.favPotions.push(data);
+      },
+      error: () => {
+        console.log("Unable to access favorites.");
+      }
+    });
+  }
+
+  deleteFavorite = (potionId: string) => {
+    this.potionService.deleteFavorite(potionId).subscribe({
+      next: () => {
+        console.log("Deleted favorite, id: " + potionId);
       },
       error: () => {
         console.log("Unable to access favorites.");
