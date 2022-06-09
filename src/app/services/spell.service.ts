@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { Spell } from '../models/spell';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class SpellService {
   }
 
   addFavorite(spellId: string): Observable<unknown> {
-    return this.http.post(this.favUrl + spellId, { withCredentials: true });
+    return this.http.post(this.favUrl + spellId, null,{ withCredentials: true });
   }
 
   getMyFavorites(): Observable<any> {
