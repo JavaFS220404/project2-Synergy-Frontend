@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { User } from 'src/app/models/user';
+import { SharedService } from 'src/app/services/shared.service';
 import { UserService } from 'src/app/services/user.service';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-login',
@@ -13,9 +16,12 @@ export class LoginComponent implements OnInit {
   username:string = '';
   password:string = '';
 
-  constructor(private userService:UserService, private router:Router) { }
+  sharedUser:User = new User(0,"","","","","");
+
+  constructor(private userService:UserService, private router:Router, private sharedService:SharedService) { }
 
   ngOnInit(): void {
+    this.sharedService.sharedUser.subscribe(message => this.sharedUser = message)
   }
 
   login(){
@@ -26,6 +32,7 @@ export class LoginComponent implements OnInit {
           this.userService.activeUser = authUser;
           this.userService.loggedIn = true;
           this.router.navigate(["/characters"]);
+          this.sharedUser = authUser;
         },
         error:()=>{
           this.userService.activeUser = null;
@@ -34,8 +41,6 @@ export class LoginComponent implements OnInit {
           this.router.navigate(["/register"]);
         }
       }
-    );
-    
+    );    
   }
-
 }

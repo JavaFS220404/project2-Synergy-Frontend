@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,10 +9,6 @@ import { UserService } from 'src/app/services/user.service';
 export class NavBarComponent implements OnInit {
 
   constructor(private userService:UserService) { }
-
-  //loggedInUser:any = this.userService.activeUser?.username; //"No one";
-  loggedInUser:string = "No one";
-  loggedIn:boolean = false;
 
   ngOnInit(): void {
   }

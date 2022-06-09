@@ -18,24 +18,18 @@ export class UserService {
     return (this.http.post(this.url,user,{withCredentials:true}) as Observable<User>)
   }
 
-  // provideActiveUser():Observable<string>{
-  //   let uname:unknown;
-  //   if (this.activeUser != undefined){
-  //      uname = this.activeUser?.username;
-  //   } else {
-  //     uname = "No one";
-  //   }
-  //   return (uname as Observable<string>);
-  // }
-
   registerUser(user:User):Observable<unknown>{
     console.log("registering user: " + user);
     return this.http.post(this.url+"register", user);
   }
 
   logout(){
+    console.log("Before logout: " + this.activeUser?.username)
+    console.log("Logged in? " + this.loggedIn)
     this.activeUser = null;
     this.loggedIn = false;
+    console.log("After logout: " + this.activeUser)
+    console.log("Logged in? " + this.loggedIn)  
   }
 
 }
