@@ -1,1 +1,112 @@
-<p>spells works!</p>
+<nav class="navbar spellBar">
+    <input class="form-control" type="text" name="name" [(ngModel)]="name" (ngModelChange)="Search()"
+        placeholder="Enter the name to search">
+</nav>
+
+<div *ngIf="displayOnlyFavorites">
+  <button (click)="toggleFavorites()" type="button" class="btn btn-outline-secondary">
+    <span> Show all</span>
+  </button>
+</div>
+<div *ngIf="!displayOnlyFavorites">
+  <button (click)="toggleFavorites()" type="button" class="btn btn-outline-secondary">
+    <i class="glyphicon glyphicon-star"></i>
+    <span> Show my favorites</span>
+  </button>
+</div>
+
+<div class="container-fluid" *ngIf="!displayOnlyFavorites; else elseBlock">
+    <div class="row">
+        <div class="col-sm-6 col-lg-4 col-xl-3 mb-5" *ngFor="let spell of spells">
+            <div class="card">
+                <div class="card-topper card-img-top">{{spell.name}}</div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="test" class="table table-bordered table-hover">
+                            <tbody>
+                                <tr *ngIf="spell?.incantation">
+                                    <td class="titles">Incantation</td>
+                                    <td class="gender text-center">{{spell.incantation}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="titles">Effect</td>
+                                    <td class="house text-center">{{spell.effect}}</td>
+                                </tr>
+                                <tr *ngIf="spell?.canBeVerbal">
+                                    <td class="titles">Can be verbal</td>
+                                    <td class="isVerbal text-center" [innerHTML]="icon">{{spell.canBeVerbal}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="titles">Type</td>
+                                    <td class="text-center">{{spell.type}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="titles">Light</td>
+                                    <td class="text-center">{{spell.light}}</td>
+                                </tr>
+                                <tr *ngIf="spell?.creator">
+                                    <td class="titles">Creator</td>
+                                    <td class="isStudent text-center">{{spell.creator}}</td>
+                                </tr>
+                        </table>
+                    </div>
+                    <div>
+                      <button (click)="addFavorite(spell.id)" type="button" class="btn btn-outline-secondary">
+                        <i class="glyphicon glyphicon-star"></i>
+                        <span> Add to favorites</span>
+                      </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #elseBlock>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 col-lg-4 col-xl-3 mb-5" *ngFor="let spell of favSpells">
+        <div class="card">
+          <div class="card-topper card-img-top">{{spell.name}}</div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table id="test" class="table table-bordered table-hover">
+                <tbody>
+                  <tr *ngIf="spell?.incantation">
+                    <td class="titles">Incantation</td>
+                    <td class="gender text-center">{{spell.incantation}}</td>
+                  </tr>
+                  <tr>
+                    <td class="titles">Effect</td>
+                    <td class="house text-center">{{spell.effect}}</td>
+                  </tr>
+                  <tr *ngIf="spell?.canBeVerbal">
+                    <td class="titles">Can be verbal</td>
+                    <td class="isVerbal text-center" [innerHTML]="icon">{{spell.canBeVerbal}}</td>
+                  </tr>
+                  <tr>
+                    <td class="titles">Type</td>
+                    <td class="text-center">{{spell.type}}</td>
+                  </tr>
+                  <tr>
+                    <td class="titles">Light</td>
+                    <td class="text-center">{{spell.light}}</td>
+                  </tr>
+                  <tr *ngIf="spell?.creator">
+                    <td class="titles">Creator</td>
+                    <td class="isStudent text-center">{{spell.creator}}</td>
+                  </tr>
+              </table>
+            </div>
+            <div>
+              <button (click)="deleteFavorite(spell.id)" type="button" class="btn btn-outline-secondary">
+                <span> -Remove from favorites</span>
+                <i class="glyphicon glyphicon-star"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

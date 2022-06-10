@@ -1,1 +1,111 @@
-<p>characters works!</p>
+<nav class="navbar characterBar">
+    <input class="form-control" type="text" nickname="nickname" [(ngModel)]="nickname" (ngModelChange)="Search()"
+        placeholder="Enter the name to search">
+</nav>
+<nav class="navbar characterBar">
+    <input class="form-control" type="text" hogwartsHouse="hogwartsHouse" [(ngModel)]="hogwartsHouse" (ngModelChange)="Searchhouse()"
+        placeholder="Enter name of the house to search">
+</nav>
+
+<div *ngIf="displayOnlyFavorites">
+  <button (click)="toggleFavorites()" type="button" class="btn btn-outline-secondary">
+    <span> Show all</span>
+  </button>
+</div>
+<div *ngIf="!displayOnlyFavorites">
+  <button (click)="toggleFavorites()" type="button" class="btn btn-outline-secondary">
+    <i class="glyphicon glyphicon-star"></i>
+    <span> Show my favorites</span>
+  </button>
+</div>
+
+<div class="container-fluid" *ngIf="!displayOnlyFavorites; else elseBlock">
+    <div class="row">
+        <div class="col-sm-6 col-lg-4 col-xl-3 mb-5" *ngFor="let character of characters">
+            <div class="card">
+                <div class="card-topper card-img-top">{{character.character}}</div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="test" class="table table-bordered table-hover">
+                            <tbody>
+                                <tr *ngIf="character?.nickname">
+                                    <td class="titles">Nickname</td>
+                                    <td class="gender text-center">{{character.nickname}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="titles">Is he/she Hogwarts Student?</td>
+                                    <td class="house text-center" [innerHTML]="icon">{{character.hogwartsStudent}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="titles">Hogwarts house</td>
+                                    <td class="text-center">{{character.hogwartsHouse}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="titles">Actor/Actress</td>
+                                    <td class="text-center">{{character.interpretedBy}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="titles">Image</td>
+                                    <td class="text-center"><img src="{{character.image}}"></td>
+                                </tr>
+                        </table>
+                    </div>
+
+                    <div>
+                      <button (click)="addFavorite(character.id)" type="button" class="btn btn-outline-secondary">
+                        <i class="glyphicon glyphicon-star"></i>
+                        <span> Add to favorites</span>
+                      </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #elseBlock>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6 col-lg-4 col-xl-3 mb-5" *ngFor="let character of favCharacters">
+      <div class="card">
+        <div class="card-topper card-img-top">{{character.character}}</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table id="test" class="table table-bordered table-hover">
+              <tbody>
+                <tr *ngIf="character?.nickname">
+                  <td class="titles">Nickname</td>
+                  <td class="gender text-center">{{character.nickname}}</td>
+                </tr>
+                <tr>
+                  <td class="titles">Is he/she Hogwarts Student?</td>
+                  <td class="house text-center" [innerHTML]="icon">{{character.hogwartsStudent}}</td>
+                </tr>
+                <tr>
+                  <td class="titles">Hogwarts house</td>
+                  <td class="text-center">{{character.hogwartsHouse}}</td>
+                </tr>
+                <tr>
+                  <td class="titles">Actor/Actress</td>
+                  <td class="text-center">{{character.interpretedBy}}</td>
+                </tr>
+                <tr>
+                  <td class="titles">Image</td>
+                  <td class="text-center"><img src="{{character.image}}"></td>
+                </tr>
+            </table>
+          </div>
+          <div>
+            <button (click)="deleteFavorite(character.id)" type="button" class="btn btn-outline-secondary">
+              <span> -Remove from favorites</span>
+              <i class="glyphicon glyphicon-star"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</ng-template>

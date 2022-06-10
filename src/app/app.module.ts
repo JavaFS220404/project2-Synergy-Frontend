@@ -8,6 +8,10 @@ import { CharactersComponent } from './components/characters/characters.componen
 import { PotionsComponent } from './components/potions/potions.component';
 import { SpellsComponent } from './components/spells/spells.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { SharedService } from './services/shared.service';
 
 @NgModule({
   declarations: [
@@ -15,14 +19,17 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     NavBarComponent,
     CharactersComponent,
     PotionsComponent,
-    SpellsComponent
+    SpellsComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

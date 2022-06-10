@@ -1,1 +1,124 @@
-<p>potions works!</p>
+<nav class="navbar PotionBar">
+  <input class="form-control" type="text" name="name" [(ngModel)]="name" (ngModelChange)="Search()"
+    placeholder="Enter the name to search">
+</nav>
+
+<div *ngIf="displayOnlyFavorites">
+  <button (click)="toggleFavorites()" type="button" class="btn btn-outline-secondary">
+    <span> Show all</span>
+  </button>
+</div>
+<div *ngIf="!displayOnlyFavorites">
+  <button (click)="toggleFavorites()" type="button" class="btn btn-outline-secondary">
+    <i class="glyphicon glyphicon-star"></i>
+    <span> Show my favorites</span>
+  </button>
+</div>
+
+<div class="container-fluid" *ngIf="!displayOnlyFavorites; else elseBlock">
+  <div class="row">
+    <div class="col-sm-6 col-lg-4 col-xl-3 mb-5" *ngFor="let potion of potions">
+      <div class="card">
+        <div class="card-topper card-img-top">{{potion.name}}</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table id="test" class="table table-bordered table-hover">
+              <tbody>
+                <tr *ngIf="potion?.effect">
+                  <td class="titles">Effect</td>
+                  <td class="text-center">{{potion.effect}}</td>
+                </tr>
+                <tr *ngIf="potion?.sideEffects">
+                  <td class="titles">Side Effects</td>
+                  <td class="text-center">{{potion.sideEffects}}</td>
+                </tr>
+                <tr *ngIf="potion?.characteristics">
+                  <td class="titles">Characteristics</td>
+                  <td class="text-center">{{potion.characteristics}}</td>
+                </tr>
+                <tr *ngIf="potion?.time">
+                  <td class="titles">Time</td>
+                  <td class="text-center">{{potion.time}}</td>
+                </tr>
+                <tr *ngIf="potion?.difficulty">
+                  <td class="titles">Difficulty</td>
+                  <td class="text-center">{{potion.difficulty}}</td>
+                </tr>
+                <tr *ngIf="potion?.ingredients">
+                  <td class="titles">Ingredients</td>
+                  <td class="text-center" *ngFor="let ingredient of potion.ingredients">{{ingredient.name}}</td>
+                </tr>
+                <tr *ngIf="potion?.manufacturer">
+                  <td class="titles">Manufacturer</td>
+                  <td class="text-center">{{potion.manufacturer}}</td>
+                </tr>
+            </table>
+          </div>
+
+          <div>
+            <button (click)="addFavorite(potion.id)" type="button" class="btn btn-outline-secondary">
+              <i class="glyphicon glyphicon-star"></i>
+              <span>Add to favorites</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<ng-template #elseBlock>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6 col-lg-4 col-xl-3 mb-5" *ngFor="let potion of favPotions">
+      <div class="card">
+        <div class="card-topper card-img-top">{{potion.name}}</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table id="test" class="table table-bordered table-hover">
+              <tbody>
+                <tr *ngIf="potion?.effect">
+                  <td class="titles">Effect</td>
+                  <td class="text-center">{{potion.effect}}</td>
+                </tr>
+                <tr *ngIf="potion?.sideEffects">
+                  <td class="titles">Side Effects</td>
+                  <td class="text-center">{{potion.sideEffects}}</td>
+                </tr>
+                <tr *ngIf="potion?.characteristics">
+                  <td class="titles">Characteristics</td>
+                  <td class="text-center">{{potion.characteristics}}</td>
+                </tr>
+                <tr *ngIf="potion?.time">
+                  <td class="titles">Time</td>
+                  <td class="text-center">{{potion.time}}</td>
+                </tr>
+                <tr *ngIf="potion?.difficulty">
+                  <td class="titles">Difficulty</td>
+                  <td class="text-center">{{potion.difficulty}}</td>
+                </tr>
+                <tr *ngIf="potion?.ingredients">
+                  <td class="titles">Ingredients</td>
+                  <td class="text-center" *ngFor="let ingredient of potion.ingredients">{{ingredient.name}}</td>
+                </tr>
+                <tr *ngIf="potion?.manufacturer">
+                  <td class="titles">Manufacturer</td>
+                  <td class="text-center">{{potion.manufacturer}}</td>
+                </tr>
+            </table>
+          </div>
+          <div>
+            <button (click)="deleteFavorite(potion.id)" type="button" class="btn btn-outline-secondary">
+              <span> -Remove from favorites</span>
+              <i class="glyphicon glyphicon-star"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</ng-template>
